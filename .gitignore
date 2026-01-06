@@ -1,0 +1,49 @@
+# Arquivo .gitignore adaptado para evitar commitar coisas sensíveis
+# Mantendo apenas exemplos e código-fonte no repositório
+
+# Arquivos de ambiente (contêm senhas, chaves, segredos)
+.env
+.env.*
+!.env-example
+
+# Dados de bancos e dumps
+/mysql-data/
+*.sql
+*.sqlite3
+
+# Uploads e arquivos gerados pela aplicação
+/files/
+/public/system/
+/public/uploads/
+
+# Logs e temporários
+/log/*
+!/log/.keep
+/tmp/
+
+# Rails / Redmine específicos
+/config/database.yml
+/config/secrets.yml
+/config/master.key
+/config/credentials.yml.enc
+
+# Bundler / gems / node
+/.bundle
+/vendor/bundle
+/node_modules/
+
+# Docker overrides / env locais
+docker-compose.override.yml
+.env.docker
+
+# Editor / OS
+/.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+Thumbs.db
+ehthumbs.db
+
+# Misc
+.byebug_history
+yarn-error.log
