@@ -1,11 +1,13 @@
 services:
-  redmine:
+  redmine-app:
     image: redmine:latest
     restart: always
     ports:
       - 8080:3000
     environment:
-      REDMINE_DB_MYSQL: ${REDMINE_DB_MYSQL}
+      REDMINE_DB_POSTGRES: ${REDMINE_DB_POSTGRES}
+      REDMINE_DB_DATABASE: ${REDMINE_DB_DATABASE}
+      REDMINE_DB_USERNAME: ${REDMINE_DB_USERNAME}
       REDMINE_DB_PASSWORD: ${REDMINE_DB_PASSWORD}
       REDMINE_SECRET_KEY_BASE: ${REDMINE_SECRET_KEY_BASE}
     volumes:
@@ -13,15 +15,14 @@ services:
       - ./plugins:/usr/src/redmine/plugins
       - ./themes:/usr/src/redmine/themes
     depends_on:
-      - db
+      - redmine-db
 
-  db:
-    image: mariadb:10.11
+  redmine-db:
+    image: postgres:17-alpine
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ./postgres-data:/var/lib/postgresql/data
