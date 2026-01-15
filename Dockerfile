@@ -1,4 +1,4 @@
-FROM redmine:5.1
+FROM redmine:6.1
 
 # Copia plugins e temas para dentro da imagem
 COPY plugins /usr/src/redmine/plugins

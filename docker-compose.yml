@@ -1,6 +1,6 @@
 services:
   redmine-app:
-    image: redmine:5.1
+    image: redmine:6.1
     restart: always
     ports:
       - ${REDMINE_PORT}:3000
@@ -12,6 +12,8 @@ services:
       REDMINE_SECRET_KEY_BASE: ${REDMINE_SECRET_KEY_BASE}
     volumes:
       - ./files:/usr/src/redmine/files
+      - ./themes:/usr/src/redmine/themes
+      - ./plugins:/usr/src/redmine/plugins
     depends_on:
       - redmine-db
 
