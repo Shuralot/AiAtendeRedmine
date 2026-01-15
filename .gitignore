@@ -7,9 +7,9 @@
 !.env-example
 
 # Dados de bancos e dumps
-/mysql-data/
-*.sql
-*.sqlite3
+postgres-data/
+postgres-data/**
+*.pid
 
 # Uploads e arquivos gerados pela aplicação
 /files/

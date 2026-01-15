@@ -1,9 +1,9 @@
 services:
   redmine-app:
-    image: redmine:latest
+    image: redmine:5.1
     restart: always
     ports:
-      - 8080:3000
+      - ${REDMINE_PORT}:3000
     environment:
       REDMINE_DB_POSTGRES: ${REDMINE_DB_POSTGRES}
       REDMINE_DB_DATABASE: ${REDMINE_DB_DATABASE}
@@ -12,8 +12,6 @@ services:
       REDMINE_SECRET_KEY_BASE: ${REDMINE_SECRET_KEY_BASE}
     volumes:
       - ./files:/usr/src/redmine/files
-      - ./plugins:/usr/src/redmine/plugins
-      - ./themes:/usr/src/redmine/themes
     depends_on:
       - redmine-db
 
